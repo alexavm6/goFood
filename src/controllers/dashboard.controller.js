@@ -1,11 +1,30 @@
+const AlimentoDeUsuario = require('../models/AlimentoDeUsuario');
+const Alimento = require('../models/Alimento');
+const Categoria = require('../models/Categoria');
+const Unidad = require('../models/Unidad');
+const Marca = require('../models/Marca');
+const Tienda = require('../models/Tienda');
+
 const dashboardCtrl = {};
 
-dashboardCtrl.renderDashboard = (req, res) => {
+dashboardCtrl.renderDashboard = async (req, res) => {
 
-    
+    const {_id} = req.user;
+
+    try{
+        const cantidadDeAlimentosIngresados = await AlimentoDeUsuario.countDocuments({U_id: _id});
+        const ultimoAlimento = await AlimentoDeUsuario.find({U_id: _id}).sort({AU_fecha_ingreso: 'desc'}).limit(1);
+        const fechaUltimoAlimentoIngresado = ultimoAlimento[0].AU_fecha_ingreso;
+        const alimentosMasCercanosACaducar = await AlimentoDeUsuario.find({U_id: _id}).sort({AU_fecha_caducidad: 'asc'}).limit(3).populate({ path: 'A_id', model: Alimento}).populate({ path: 'C_id', model: Categoria}).populate({ path: 'UN_id', model: Unidad}).populate({ path: 'M_id', model: Marca}).populate({ path: 'T_id', model: Tienda});
+        console.log(alimentosMasCercanosACaducar);
+        res.render('dashboard/dashboard', {cantidadDeAlimentosIngresados, fechaUltimoAlimentoIngresado, alimentosMasCercanosACaducar});
+    }catch(e){
+        console.log(e.message);
+        req.flash('error_msg', 'Error al calcular cantidad de alimentos ingresados');
+        res.render('dashboard/dashboard');
+    }
 
 
-    res.render('dashboard/dashboard');
 };
 
 dashboardCtrl.renderFood = (req, res) => {

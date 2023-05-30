@@ -1,8 +1,42 @@
 <section class="card">
     <div class="card-body">
         <h1>Dashboard</h1>
-        <h3>Bienvenido {{user_global.names}}</h3>
+        <h3>Bienvenido {{user_global.names}} {{user_global.last_names}}</h3>
         
-        <p>Somos una empresa que se preocpa por nuestros consumidores </p>
+        <div class="card text-center">
+        <div class="card-header">
+            Alimentos
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Cantidad de alimentos ingresados</h5>
+            <p class="card-text">{{cantidadDeAlimentosIngresados}}</p>
+            <a href="/dashboard/food" class="btn btn-primary">Ver Alimentos</a>
+        </div>
+        <div class="card-footer text-muted">
+            Fecha de ultimo ingreso: {{fechaUltimoAlimentoIngresado}}
+        </div>
+        </div>
+
+        <h2>Alimentos mas cercanos a caducar</h2>
+
+        <div class="card-deck">
+        {{#each alimentosMasCercanosACaducar}}
+            <div class="card">
+                <img class="card-img-top" src="/img/comida.jpg" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title">{{A_id.A_nombre}}</h5>
+                <p class="card-text">Categoria: {{C_id.C_nombre}}</p>
+                <p class="card-text">Cantidad: {{AU_cantidad}} {{UN_id.UN_unidad}}</p>
+                <p class="card-text">Marca: {{M_id.M_nombre}}</p>
+                <p class="card-text">Tienda: {{T_id.T_nombre}}</p>
+                </div>
+                <div class="card-footer">
+                <small class="text-muted">Fecha de caducidad: {{AU_fecha_caducidad}}</small>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+
+
     </div>
 </section>
