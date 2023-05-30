@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Go Food</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {{#if user_global}}
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Dashboard<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/dashboard/food">Comidas<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/dashboard/recipes">Recetas<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/dashboard/inventory">Inventario<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/dashboard/categories">Categorias<span class="sr-only">(current)</span></a>
+                    </li>
+                {{else}}
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/contact"><i class="fa-solid fa-phone fa-bounce p-1" style="color: #ffffff;"></i>Contactanos<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/about"><i class="fa-solid fa-star fa-bounce p-1" style="color: #ffffff;"></i>Sobre Nosotros<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/rates"><i class="fa-solid fa-truck-fast fa-bounce p-1" style="color: #ffffff;"></i>Tarifas<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/steps"><i class="fa-solid fa-shoe-prints fa-bounce p-1" style="color: #ffffff;"></i>Pasos<span class="sr-only">(current)</span></a>
+                    </li>
+                {{/if}}
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {{#if user_global}}
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/user/logout">Cerrar Sesión<span class="sr-only">(current)</span></a>
+                    </li>
+                {{else}}
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/user/login"><i class="fa-solid fa-location-dot fa-bounce p-1" style="color: #ffffff;"></i>Inicia Sesión<span class="sr-only">(current)</span></a>
+                    </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>
