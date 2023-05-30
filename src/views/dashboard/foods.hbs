@@ -1,0 +1,35 @@
+<section class="card">
+    <div class="card-body">
+        <h1>Alimentos</h1>
+        <a href="/foods/newfood"><button type="button" class="btn btn-danger">Insertar nuevo alimento</button></a>
+        <br>
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Alimento</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Fecha de Ingreso</th>
+                <th scope="col">Fecha de Caducidad</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Tienda</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each alimentosIngresados}}
+                <tr>
+                <th scope="row">1</th>
+                <td>{{A_id.A_nombre}}</td>
+                <td>{{C_id.C_nombre}}</td>
+                <td>{{AU_fecha_ingreso}}</td>
+                <td>{{AU_fecha_caducidad}}</td>
+                <td>{{AU_cantidad}} {{UN_id.UN_unidad}}</td>
+                <td>{{M_id.M_nombre}}</td>
+                <td>{{T_id.T_nombre}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+            </table>
+    </div>
+</section>

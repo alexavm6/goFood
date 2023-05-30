@@ -3,7 +3,7 @@ const router = Router();
 
 const { 
     renderDashboard,
-    renderFood,
+    renderFoods,
     renderRecipes, 
     renderInventory,
     renderCategories 
@@ -13,7 +13,7 @@ const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/dashboard', isAuthenticated, renderDashboard);
 
-router.get('/dashboard/food', isAuthenticated, renderFood);
+router.get('/dashboard/foods', isAuthenticated, renderFoods);
 
 router.get('/dashboard/recipes', isAuthenticated, renderRecipes);
 
