@@ -1,6 +1,15 @@
 <section class="card">
     <div class="card-body">
         <h1>Recetas</h1>
-        <p>Somos una empresa que lleva universitarios por todo el pais a su campus de forma segura y divertida</p>
+        {{#each recetas}}
+            <div class="card mb-3">
+            <img class="card-img-top" src="/img/comida.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{R_nombre}}</h5>
+                <p class="card-text">{{R_descripcion}}</p>
+                <a href="#"><button type="button" class="btn btn-outline-info">Ver Receta Completa</button></a>
+            </div>
+            </div>
+        {{/each}}
     </div>
 </section>

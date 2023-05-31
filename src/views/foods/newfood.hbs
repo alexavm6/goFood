@@ -1,6 +1,93 @@
-
 <section class="card">
     <div class="card-body">
-        <h1>Formulario para ingresar alimento</h1>
+    <form action="/foods/newfood" method="POST">
+    <h1>Formulario para ingresar alimento</h1>
+
+    <div class="form-group">
+        <label class="text-danger" for="alimento">Alimento</label>
+        <select class="form-control" id="alimento" name="alimento">
+            {{#each alimentos}}
+            <option>{{A_nombre}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="text-danger" for="categoria">Categoria</label>
+        <select class="form-control" id="categoria" name="categoria">
+            {{#each categorias}}
+            <option>{{C_nombre}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <p class="text-danger">Fecha de Ingreso:</p>
+    <p>Dejalo en blanco si quieres que sea automatico</p>
+    <div class="form-group">
+    <label for="diaIngreso">Dia de Ingreso</label>
+    <input type="text" class="form-control" id="diaIngreso" name="diaIngreso" placeholder="Dia de Ingreso">
+    </div>
+
+    <div class="form-group">
+    <label for="mesIngreso">Mes de Ingreso</label>
+    <input type="text" class="form-control" id="mesIngreso" name="mesIngreso" placeholder="Mes de Ingreso">
+    </div>
+
+    <div class="form-group">
+    <label for="anoIngreso">Año</label>
+    <input type="text" class="form-control" id="anoIngreso" name="anoIngreso" placeholder="Año de Ingreso">
+    </div>
+
+    <p class="text-danger">Fecha de Caducidad:</p>
+    <p>Dejalo en blanco si quieres que sea automatico</p>
+    <div class="form-group">
+    <label for="diaCaducidad">Dia de Caducidad</label>
+    <input type="text" class="form-control" id="diaCaducidad" name="diaCaducidad" placeholder="Dia de Caducidad">
+    </div>
+
+    <div class="form-group">
+    <label for="mesCaducidad">Mes de Caducidad</label>
+    <input type="text" class="form-control" id="mesCaducidad" name="mesCaducidad" placeholder="Mes de Caducidad">
+    </div>
+
+    <div class="form-group">
+    <label for="anoCaducidad">Año de Caducidad</label>
+    <input type="text" class="form-control" id="anoCaducidad" name="anoCaducidad" placeholder="Año de Caducidad">
+    </div>
+
+    <div class="form-group">
+    <label  class="text-danger" for="cantidad">Cantidad</label>
+    <input type="number" value="1" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" min="1">
+    </div>
+
+    <div class="form-group">
+        <label class="text-danger" for="unidad">Unidad</label>
+        <select class="form-control" id="unidad" name="unidad">
+            {{#each unidades}}
+            <option>{{UN_unidad}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="text-danger" for="marca">Marca</label>
+        <select class="form-control" id="marca" name="marca">
+            {{#each marcas}}
+            <option>{{M_nombre}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label class="text-danger" for="tienda">Tienda</label>
+        <select class="form-control" id="tienda" name="tienda">
+            {{#each tiendas}}
+            <option>{{T_nombre}}</option>
+            {{/each}}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
     </div>
 </section>
