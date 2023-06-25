@@ -16,8 +16,6 @@ const DuracionSchema = new Schema({
         required: true,
         ref: "Estacion"
     }
-}, {
-    timestamps: true
 });
 
 

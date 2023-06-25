@@ -6,8 +6,6 @@ const AlimentoSchema = new Schema({
         type: String,
         required: true
     }
-}, {
-    timestamps: true
 });
 
 

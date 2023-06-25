@@ -6,8 +6,6 @@ const MarcaSchema = new Schema({
         type: String,
         required: true
     }
-}, {
-    timestamps: true
 });
 
 

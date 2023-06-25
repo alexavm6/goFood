@@ -14,8 +14,6 @@ const EstacionSchema = new Schema({
         type: Date,
         required: true
     }
-}, {
-    timestamps: true
 });
 
 

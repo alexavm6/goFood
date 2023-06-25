@@ -44,8 +44,6 @@ const AlimentoDeUsuarioSchema = new Schema({
         required: true,
         ref: "Tienda"
     }
-}, {
-    timestamps: true
 });
 
 

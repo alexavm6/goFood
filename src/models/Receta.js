@@ -11,8 +11,6 @@ const RecetaSchema = new Schema({
         required: true
     },
     R_ingredientes: []
-}, {
-    timestamps: true
 });
 
 
