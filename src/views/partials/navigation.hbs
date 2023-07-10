@@ -10,12 +10,27 @@
                     <li class="nav-item active">
                     <a class="nav-link" href="/dashboard"><i class="fa-solid fa-gauge p-1" style="color: #ffffff;"></i>Dashboard<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/dashboard/foods"><i class="fa-solid fa-utensils p-1" style="color: #ffffff;"></i>Alimentos<span class="sr-only">(current)</span></a>
+                    
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-list p-1" style="color: #ffffff;"></i>Recetas
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/recipes/possible">Recetas posibles</a>
+                        <a class="dropdown-item" href="/dashboard/recipes">Ver recetas</a>
+                        </div>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/dashboard/recipes"><i class="fa-solid fa-list p-1" style="color: #ffffff;"></i>Recetas<span class="sr-only">(current)</span></a>
+
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-utensils p-1" style="color: #ffffff;"></i>Alimentos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/dashboard/foods">Alimentos ingresados</a>
+                        <a class="dropdown-item" href="/foods/newfood">Ingresar alimento</a>
+                        </div>
                     </li>
+
                     <li class="nav-item active">
                         <a class="nav-link" href="/dashboard/inventory"><i class="fa-solid fa-shop p-1" style="color: #ffffff;"></i>Inventario<span class="sr-only">(current)</span></a>
                     </li>

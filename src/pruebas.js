@@ -21,7 +21,7 @@ const Unidad = require('./models/Unidad')
 const User = require('./models/User')
 const Valoracion = require('./models/Valoracion')
 
-//creaReceta()
+//creaReceta2()
 //creaValoracion()
 //creaUnidad()
 //creaCategoria()
@@ -31,9 +31,24 @@ const Valoracion = require('./models/Valoracion')
 //creaEstacion()
 //creaDuracion()
 //creaAlimentoDeUsuario()
+//creaReceta()
+
+//creaFecha()
+async function creaFecha(){
+    const nuevaEstacion1 = new Estacion({
+        E_nombre: "Otono",
+        E_fecha_inicio: new Date(2023,5,19),
+        E_fecha_fin: new Date(2024,7,23)
+    })
+    await nuevaEstacion1.save()
+    console.log(nuevaEstacion1)
+
+    
+}
 
 
-async function creaReceta(){
+
+async function creaReceta2(){
     const nuevaReceta = new Receta({
         R_nombre: "Pasta Alfredo",
         R_descripcion: "Fideos con queso y hotdog",
@@ -42,6 +57,27 @@ async function creaReceta(){
     await nuevaReceta.save()
     console.log(nuevaReceta)
 }
+
+async function creaReceta(){
+    const nuevaReceta = new Receta({
+        R_nombre: "Arroz con Pollo",
+        R_descripcion: "Arroz cocido en especia de verduras",
+        R_ingredientes: [{
+            nombre: "Galleta Soda",
+            cantidad: 15,
+            unidad: "Kg"
+        },
+        {
+            nombre: "Lata de atun",
+            cantidad: 15,
+            unidad: "Kg"
+        }
+        ]
+    })
+    await nuevaReceta.save()
+    console.log(nuevaReceta)
+}
+
 
 async function creaValoracion(){
     const nuevaValoracion = new Valoracion({

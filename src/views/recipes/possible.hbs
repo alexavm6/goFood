@@ -1,0 +1,26 @@
+<section class="card">
+    <div class="card-body">
+        
+        
+        {{#if arrayRecetasPosibles}}
+            
+                <h1>Recetas Posibles</h1>
+                {{#each arrayRecetasPosibles}}
+                    <div class="card mb-3">
+                    <img class="card-img-top" src="/img/comida.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{R_nombre}}</h5>
+                        <p class="card-text">{{R_descripcion}}</p>
+                        <a href="/recipes/completerecipe/{{_id}}"><button type="button" class="btn btn-outline-info">Ver Receta Completa</button></a>
+                    </div>
+                    </div>
+                {{/each}}
+            
+        {{else}}
+            <h1>No hay recetas posibles</h1>
+            <p>¡Ingrese alimentos para tener recetas posibles de cocinar!</p>
+            <a href="/foods/newfood"><button type="button" class="btn btn-outline-info">Ingresar alimentos</button></a>
+        {{/if}}
+
+    </div>
+</section>

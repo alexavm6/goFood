@@ -6,6 +6,9 @@ const TiendaSchema = new Schema({
         type: String,
         required: true
     }
+},
+{
+    timestamps: true
 });
 
 

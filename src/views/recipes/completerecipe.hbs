@@ -1,0 +1,19 @@
+<section class="card">
+    <div class="card-body">
+        
+
+        <div class="card mb-3">
+            <img class="card-img-top" src="/img/comida.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{recetaEncotrada.R_nombre}}</h5>
+                <p class="card-text">{{recetaEncotrada.R_descripcion}}</p>
+                <p>Ingredientes</p>
+                {{#each arrayIngredientes}}
+                    <p>{{cantidad}} {{unidad}} de {{nombre}}</p>
+                {{/each}}
+            </div>
+        </div>
+
+
+    </div>
+</section>

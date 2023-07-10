@@ -1,0 +1,80 @@
+<section class="card">
+    <div class="card-body">
+    
+    
+
+        <form action="/foods/edit/{{alimentoDeUsuarioEncontrado._id}}?_method=PUT" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <h1>Edita tu alimento</h1>
+
+        <div class="form-group">
+            <label class="text-danger" for="alimento">Alimento</label>
+            <select class="form-control" id="alimento" name="alimento">
+                {{#each alimentos}}
+                <option>{{A_nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="text-danger" for="categoria">Categoria</label>
+            <select class="form-control" id="categoria" name="categoria">
+                {{#each categorias}}
+                <option>{{C_nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <p class="text-danger">Fecha de Ingreso Actual:</p>
+        <p>Dejalo en blanco si quieres que sea automatico</p>
+        <p>{{anioFechaIngreso}} {{mesFechaIngreso}} {{diaFechaIngreso}}</p>
+
+        <input type="date"  name="fechaIngreso"
+       value="{{anioFechaIngreso}}-{{mesFechaIngreso}}-{{diaFechaIngreso}}">
+
+        <p class="text-danger">Fecha de Caducidad Actual:</p> 
+        <p>Dejalo en blanco si quieres que sea automatico</p>
+        <p>{{anioFechaCaducidad}} {{mesFechaCaducidad}} {{diaFechaCaducidad}}</p>
+        
+        <input type="date"  name="fechaCaducidad"
+       value="{{anioFechaCaducidad}}-{{mesFechaCaducidad}}-{{diaFechaCaducidad}}">
+
+        <div class="form-group">
+        <label  class="text-danger" for="cantidad">Cantidad</label>
+        <input type="number" value="{{cantidad}}" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" min="1">
+        </div>
+
+        <div class="form-group">
+            <label class="text-danger" for="unidad">Unidad</label>
+            <select class="form-control" id="unidad" name="unidad">
+                {{#each unidades}}
+                <option>{{UN_unidad}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="text-danger" for="marca">Marca</label>
+            <select class="form-control" id="marca" name="marca">
+                {{#each marcas}}
+                <option>{{M_nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="text-danger" for="tienda">Tienda</label>
+            <select class="form-control" id="tienda" name="tienda">
+                {{#each tiendas}}
+                <option>{{T_nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
+
+    
+
+    </div>
+</section>
