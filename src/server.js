@@ -64,6 +64,7 @@ app.use((req, res, next) => {
  app.use(require('./routes/admin.routes'));
  app.use(require('./routes/foods.routes'));
  app.use(require('./routes/recipes.routes'));
+ app.use(require('./routes/categories.routes'));
 
 //Static Files
 app.use(express.static(path.join(__dirname, 'public'))); 

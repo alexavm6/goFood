@@ -53,12 +53,97 @@ dashboardCtrl.renderRecipes = async (req, res) => {
     }  
 };
 
-dashboardCtrl.renderInventory = (req, res) => {
-    res.render('dashboard/inventory');
+dashboardCtrl.renderInventory = async (req, res) => {
+    try{
+        const U_id = req.user._id;
+        const alimentosDistintosId = await AlimentoDeUsuario.find({U_id: U_id}).distinct('A_id');
+            console.log(alimentosDistintosId, "\n--------------")
+        const todosLosAlimentos = await AlimentoDeUsuario.find({U_id: U_id});
+            console.log(todosLosAlimentos, "\n--------------")
+
+            
+        const alimentosSuma = [];
+        let sumaCantidad = 0;
+        
+        for (const alimentoDistintoId of alimentosDistintosId) {
+
+            const alimentoDistinto = await AlimentoDeUsuario.find({A_id: alimentoDistintoId, U_id: U_id}).limit(1).populate({ path: 'A_id', model: Alimento}).populate({ path: 'UN_id', model: Unidad});
+                console.log(alimentoDistinto, "\n--------------")
+            for (const alimentoDeTodosLosElementos of todosLosAlimentos) {
+                    console.log(alimentoDeTodosLosElementos, "\n--------------")
+
+                    console.log("¿Coinciden?: --- ", alimentoDistinto[0].A_id._id, " y este ", alimentoDeTodosLosElementos.A_id, "\n--------------")
+                    
+                    let comparar1 =alimentoDistinto[0].A_id._id.toString();
+                        console.log(comparar1, "\n--------------")
+                    let comparar2 = alimentoDeTodosLosElementos.A_id.toString();
+                        console.log(comparar2, "\n--------------")
+
+                if(comparar1 == comparar2){
+                        console.log("coincidencia: ---------", alimentoDistinto[0].A_id._id, "=", alimentoDeTodosLosElementos.A_id, "\n--------------")
+                    const cantidad = alimentoDeTodosLosElementos.AU_cantidad;
+                        console.log(cantidad, "\n--------------")
+                    sumaCantidad+= cantidad;
+                        console.log(sumaCantidad, "\n--------------")
+                }
+            }
+
+            const objCantidad = {};
+            objCantidad.id = alimentoDistinto[0].A_id._id;
+            objCantidad.nombre = alimentoDistinto[0].A_id.A_nombre;
+            objCantidad.total = sumaCantidad;
+            objCantidad.unidad = alimentoDistinto[0].UN_id.UN_unidad;
+            
+            sumaCantidad = 0;
+
+            alimentosSuma.push(objCantidad);
+                console.log(alimentosSuma, "\n--------------")
+
+        }
+
+        
+        //console.log("Alimentos de Usuario con A_id diferentes: ---------------\n",alimentosUsuarioIds, "\n---------------------");
+        res.render('dashboard/inventory', {alimentosSuma});
+
+    }catch(e){
+
+        console.log(e);
+
+    }
+
 };
 
-dashboardCtrl.renderCategories = (req, res) => {
-    res.render('dashboard/categories');
+dashboardCtrl.renderCategories = async (req, res) => {
+
+    try{
+
+        const U_id = req.user._id;
+
+        const categorias = await Categoria.find();
+
+        arrayCategoriasYCantidad = [];
+
+        for (const categoria of categorias) {
+
+            const objCategoria = {};
+
+            const C_id = categoria._id;
+
+            const cantidadPorCategoria = await AlimentoDeUsuario.countDocuments({U_id: U_id, C_id: C_id});
+
+            objCategoria.categoria = categoria;
+            objCategoria.categoriaCantidad = cantidadPorCategoria;
+
+            arrayCategoriasYCantidad.push(objCategoria);
+
+        }
+
+        res.render('dashboard/categories', {arrayCategoriasYCantidad});
+
+    }catch(e){
+        console.log(e);
+    }  
+
 };
 
 

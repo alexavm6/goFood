@@ -1,6 +1,20 @@
 <section class="card">
     <div class="card-body">
         <h1>Inventario</h1>
-        <p>Somos una empresa que lleva universitarios por todo el pais a su campus de forma segura y divertida</p>
+        
+
+        
+
+        {{#each alimentosSuma}}
+            <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/img/comida.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h1>{{nombre}}</h1>
+                <p class="card-text">Tienes {{total}} {{unidad}}</p>
+            </div>
+            </div>
+        {{/each}}
+
+
     </div>
 </section>

@@ -1,0 +1,57 @@
+<section class="card">
+    <div class="card-body">
+        
+        <h1>{{categoriaEncontrada.C_nombre}}</h1>
+
+            {{#if alimentosPorCategorias}}
+            
+                <p>Tienes {{cantidadPorCategoria}} alimentos con esta categoria</p>
+                
+                <a href="/foods/newfood"><button type="button" class="btn btn-outline-info">¡Ingrese alimentos con esta categoria!</button></a>
+                
+
+                <table class="table">
+                <thead>
+                    <tr>
+                    
+                    <th scope="col">Alimento</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Fecha de Ingreso</th>
+                    <th scope="col">Fecha de Caducidad</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Tienda</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each alimentosPorCategorias}}
+                    <tr>
+                    
+                    <td>{{A_id.A_nombre}}</td>
+                    <td>{{C_id.C_nombre}}</td>
+                    <td>{{AU_fecha_ingreso}}</td>
+                    <td>{{AU_fecha_caducidad}}</td>
+                    <td>{{AU_cantidad}} {{UN_id.UN_unidad}}</td>
+                    <td>{{M_id.M_nombre}}</td>
+                    <td>{{T_id.T_nombre}}</td>
+                    <td><a href="/categories/edit/{{_id}}"><i class="fa-regular fa-pen-to-square" style="color: #c0a0b7;"></i></a></td>
+                    <td>
+                        <form action="/categories/delete/{{_id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-warning"><i class="fa-solid fa-delete-left"></i></button>
+                        </form>
+                    </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+                </table>
+        
+            {{else}}
+                <p>No tienes alimentos con esta categoria</p>
+                <a href="/foods/newfood"><button type="button" class="btn btn-outline-info">¡Ingrese alimentos con esta categoria!</button></a>
+            {{/if}}
+
+    </div>
+</section>

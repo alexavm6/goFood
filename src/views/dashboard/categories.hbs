@@ -1,8 +1,18 @@
 <section class="card">
     <div class="card-body">
         <h1>Categorias</h1>
-        <h3>Bienvenido {{user_global.names}}</h3>
         
-        <p>Somos una empresa que se preocupa por nuestros consumidores </p>
+        {{#each arrayCategoriasYCantidad}}
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{categoria.C_nombre}}</h5>
+                <p class="card-text">Tienes {{categoriaCantidad}} alimentos con esta categoria</p>
+                <a href="/categories/completecategorie/{{categoria._id}}"><button type="button" class="btn btn-outline-info">Ver Categoria Completa</button></a>
+            </div>
+            <img class="card-img-bottom" src="/img/comida.jpg" alt="Card image cap">
+            </div>
+            <br>
+        {{/each}}
+
     </div>
 </section>
