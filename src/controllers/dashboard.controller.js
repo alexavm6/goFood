@@ -8,19 +8,37 @@ const Receta = require('../models/Receta');
 
 const dashboardCtrl = {};
 
+//nuevoMes < 10 ? '0' + nuevoMes : nuevoMes
+
 dashboardCtrl.renderDashboard = async (req, res) => {
 
     const {_id} = req.user;
 
     try{
         const cantidadDeAlimentosIngresados = await AlimentoDeUsuario.countDocuments({U_id: _id});
+            console.log(cantidadDeAlimentosIngresados)
         const ultimoAlimento = await AlimentoDeUsuario.find({U_id: _id}).sort({AU_fecha_ingreso: 'desc'}).limit(1);
-        const fechaUltimoAlimentoIngresado = ultimoAlimento[0].AU_fecha_ingreso;
-        const alimentosMasCercanosACaducar = await AlimentoDeUsuario.find({U_id: _id}).sort({AU_fecha_caducidad: 'asc'}).limit(3).populate({ path: 'A_id', model: Alimento}).populate({ path: 'C_id', model: Categoria}).populate({ path: 'UN_id', model: Unidad}).populate({ path: 'M_id', model: Marca}).populate({ path: 'T_id', model: Tienda});
-        //console.log(alimentosMasCercanosACaducar);
-        res.render('dashboard/dashboard', {cantidadDeAlimentosIngresados, fechaUltimoAlimentoIngresado, alimentosMasCercanosACaducar});
+            console.log(ultimoAlimento)
+
+        
+        if(cantidadDeAlimentosIngresados == 0){
+            
+            res.render('dashboard/dashboard', {cantidadDeAlimentosIngresados});
+
+        }else{
+
+            const fechaUltimoAlimentoIngresado = ultimoAlimento[0].AU_fecha_ingreso;
+            const alimentosMasCercanosACaducar = await AlimentoDeUsuario.find({U_id: _id}).sort({AU_fecha_caducidad: 'asc'}).limit(3).populate({ path: 'A_id', model: Alimento}).populate({ path: 'C_id', model: Categoria}).populate({ path: 'UN_id', model: Unidad}).populate({ path: 'M_id', model: Marca}).populate({ path: 'T_id', model: Tienda});
+            //console.log(alimentosMasCercanosACaducar);
+        
+            res.render('dashboard/dashboard', {cantidadDeAlimentosIngresados, fechaUltimoAlimentoIngresado, alimentosMasCercanosACaducar});
+
+        }
+
+        
+
     }catch(e){
-        console.log(e.message);
+        console.log(e);
         //req.flash('error_msg', 'Error al calcular cantidad de alimentos ingresados');
         //res.render('dashboard/dashboard');
     }
@@ -37,7 +55,7 @@ dashboardCtrl.renderFoods = async (req, res) => {
         //console.log(alimentosIngresados);
         res.render('dashboard/foods', {alimentosIngresados});
     }catch(e){
-        console.log(e.message);
+        console.log(e);
         //req.flash('error_msg', 'Error al mostrar alimentos ingresados');
         //res.render('dashboard/das');
     }  
@@ -49,7 +67,7 @@ dashboardCtrl.renderRecipes = async (req, res) => {
         console.log(recetas);
         res.render('dashboard/recipes', {recetas});
     }catch(e){
-        console.log(e.message);
+        console.log(e);
     }  
 };
 

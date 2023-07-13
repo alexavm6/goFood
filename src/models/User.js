@@ -37,14 +37,6 @@ const UserSchema = new Schema({
     phone_number:  {
         type: String,
         required: true
-    },
-    start_service:  {
-        type: String,
-        required: true
-    },
-    end_service:  {
-        type: String,
-        required: true
     }
 },
 {
