@@ -53,7 +53,7 @@ recipesCtrl.renderPossible = async (req, res) => {
 
             //Todos los ingredientes de la receta 1 han sido comparados con los alimentos del usuario
             
-            if(contadorCoincidencias >= 3){
+            if(contadorCoincidencias >= 2){
                 arrayRecetasPosibles.push(receta);
                 contadorCoincidencias = 0;
             }else{

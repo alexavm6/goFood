@@ -89,13 +89,13 @@ userCtrl.signup = async (req, res) => {
             errors.push({text: 'Ya existe un usuario con este codigo'});
         }
         
-        
+        /*
         const email1 = await User.findOne({email: email});
         console.log('Email', email1);
         if (email1) {
             errors.push({text: 'Ya existe un usuario con este email'});
         }
-
+        */
         
         const document_number1 = await User.findOne({document_number: document_number});
         console.log('Numero de documento', document_number1);
